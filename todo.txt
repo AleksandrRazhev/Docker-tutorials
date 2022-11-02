@@ -1,0 +1,46 @@
+Освоить docker за 10 минут
+	https://www.youtube.com/watch?v=ZhNYfN6M9o0&t=404s
+	
+	https://docs.docker.com/
+	
+	docker compose version
+	docker --version
+	docker version
+	
+	https://docs.docker.com/engine/install/linux-postinstall/
+	
+	sudo groupadd docker			создать группу
+	sudo usermod -aG docker $USER		добавить пользователя в группу
+	docker run hello-world
+	
+	docker ps				посмотреть все запущенные контейнеры
+	docker stop <имя_контейнера>		остановить контейнер
+	docker run <имя_контейнера>		запустить контейнер
+	docker image ls			список доступных контейнеров
+	
+	https://linux-notes.org/ostanovit-udalit-vse-docker-kontejnery/
+	docker stop $(docker ps -a -q)	Остановить все Docker контейнеры
+	docker rm $(docker ps -a -q)		Удалить все Docker контейнеры
+	docker rmi $(docker images -q)	
+	
+		
+	git clone https://github.com/1tayH/noisy.git
+	docker build -t noisy .
+	docker run -it noisy --config config.json
+	
+	когда создается контейнер через docker build, идет обращение к Dockerfile
+___________________________________________________________________________________________________________________________
+docker nodejs
+	https://www.youtube.com/watch?v=FY39MeFArtM
+	
+	docker build -t test1 -f ./Dockerfile.test1 .
+	docker run --name test_ct -d -p 81:3000 test1
+	curl localhost:81
+	
+	docker image ls
+	
+	docker build -t test2 -f ./Dockerfile.test2 .
+	docker run --name test2 -d -p 82:80 test2
+
+	
+	
