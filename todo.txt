@@ -1,3 +1,9 @@
+	docker stop $(docker ps -a -q)	Остановить все Docker контейнеры
+	docker rm $(docker ps -a -q)		Удалить все Docker контейнеры
+	docker rmi $(docker images -q)	удалить
+	
+	ctrl + d				выйти из docker run -it ubuntu bash		
+___________________________________________________________________________________________________________________________
 Освоить docker за 10 минут
 	https://www.youtube.com/watch?v=ZhNYfN6M9o0&t=404s
 	
@@ -19,11 +25,7 @@
 	docker image ls			список доступных контейнеров
 	
 	https://linux-notes.org/ostanovit-udalit-vse-docker-kontejnery/
-	docker stop $(docker ps -a -q)	Остановить все Docker контейнеры
-	docker rm $(docker ps -a -q)		Удалить все Docker контейнеры
-	docker rmi $(docker images -q)	
 	
-		
 	git clone https://github.com/1tayH/noisy.git
 	docker build -t noisy .
 	docker run -it noisy --config config.json
@@ -41,6 +43,37 @@ docker nodejs
 	
 	docker build -t test2 -f ./Dockerfile.test2 .
 	docker run --name test2 -d -p 82:80 test2
-
+___________________________________________________________________________________________________________________________
+MongoDB inside Docker Container
+	https://www.youtube.com/watch?v=uklyCSKQ1Po
 	
+	docker pull mongo:4.4.6
+	mkdir mongo
+	cd mongo
+	docker run -d -p 2717:27017 -v ~/mongo:/data/db --name mymongo mongo:4.4.6
+	
+		docker run -d -p 2717:27017 --name my_mongo mongo:4.4.6		запуск без монтирования
+		docker run -p 27017:27017 --name mymongo mongo:4.4.6			запустилось первый раз
+	
+	sudo apt install mongodb-clients
+		
+	docker exec -it mymongo bash
+		mongo
+		show dbs
+		use test
+		db.user.insert({name: "igel"})
+		db.user.find()
+		exit
+		exit
+		
+	mongo localhost:2717
+		show dbs
+		use test
+		db.user.find()
+		exit
+		
+	образ не монтируется, если выбрать папку монтирования на диске с NTFS	
+	
+
+		
 	
